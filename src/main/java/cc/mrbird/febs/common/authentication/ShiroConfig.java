@@ -2,6 +2,7 @@ package cc.mrbird.febs.common.authentication;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import cc.mrbird.febs.common.properties.FebsProperties;
+import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
@@ -71,8 +72,8 @@ public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-
-        Map<String, Filter> filters = shiroFilterFactoryBean.getFilters();//获取filters
+        //获取filters
+        Map<String, Filter> filters = shiroFilterFactoryBean.getFilters();
 
         // 设置 securityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
@@ -83,7 +84,8 @@ public class ShiroConfig {
         // 未授权 url
         shiroFilterFactoryBean.setUnauthorizedUrl(febsProperties.getShiro().getUnauthorizedUrl());
 
-        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        LinkedHashMap<String, String> filterChainDefinitionMap = Maps.newLinkedHashMap();
+        ;
         // 设置免认证 url
         String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(febsProperties.getShiro().getAnonUrl(), ",");
         for (String url : anonUrls) {

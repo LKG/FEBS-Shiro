@@ -22,7 +22,10 @@ import java.util.regex.Pattern;
 public class XssFilter implements Filter {
 
     private static Logger logger = LoggerFactory.getLogger(XssFilter.class);
-    // 是否过滤富文本内容
+
+    /**
+     * 是否过滤富文本内容
+     */
     private boolean flag = false;
 
     private List<String> excludes = new ArrayList<>();

@@ -16,16 +16,15 @@ import java.text.ParseException;
 public class TimeConverter implements WriteConverter {
     @Override
     public String convert(Object value) {
-        if (value == null)
+        if (value == null){
             return "";
-        else {
-            try {
-                return DateUtil.formatCSTTime(value.toString(), DateUtil.FULL_TIME_SPLIT_PATTERN);
-            } catch (ParseException e) {
-                String message = "时间转换异常";
-                log.error(message, e);
-                throw new ExcelKitWriteConverterException(message);
-            }
+        }
+        try {
+            return DateUtil.formatCSTTime(value.toString(), DateUtil.FULL_TIME_SPLIT_PATTERN);
+        } catch (ParseException e) {
+            String message = "时间转换异常";
+            log.error(message, e);
+            throw new ExcelKitWriteConverterException(message);
         }
     }
 }
