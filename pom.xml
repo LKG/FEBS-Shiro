@@ -189,9 +189,9 @@
     <build>
         <finalName>fire-web</finalName>
         <resources>
-            <resource>
+  <!--          <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>true</filtering>  <!-- 加上filter会过滤该资源路径中的文件 -->
+                <filtering>true</filtering>  &lt;!&ndash; 加上filter会过滤该资源路径中的文件 &ndash;&gt;
                 <includes>
                     <include>*.properties</include>
                     <include>*.yml</include>
@@ -200,7 +200,7 @@
                     <include>messages/**</include>
                     <include>ehcache/**</include>
                 </includes>
-            </resource>
+            </resource>-->
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
                 <filtering>false</filtering>
