@@ -17,6 +17,9 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <docker.image.prefix>spring-boot</docker.image.prefix>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mybatis.plus.version>3.1.0</mybatis.plus.version>
@@ -189,18 +192,22 @@
     <build>
         <finalName>fire-web</finalName>
         <resources>
-  <!--          <resource>
+         <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>true</filtering>  &lt;!&ndash; 加上filter会过滤该资源路径中的文件 &ndash;&gt;
+                <filtering>true</filtering>
+                <!-- 加上filter会过滤该资源路径中的文件-->
                 <includes>
+
                     <include>*.properties</include>
                     <include>*.yml</include>
                     <include>*.xml</include>
+                    <include>ip2region/**</include>
+                    <include>mapper/**</include>
                     <include>templates/**</include>
                     <include>messages/**</include>
                     <include>ehcache/**</include>
                 </includes>
-            </resource>-->
+            </resource>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
                 <filtering>false</filtering>
