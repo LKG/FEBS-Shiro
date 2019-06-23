@@ -1,6 +1,7 @@
 package cc.mrbird.febs.common.entity;
 
 import cc.mrbird.febs.system.entity.Dept;
+import com.google.common.collect.Lists;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -31,7 +32,7 @@ public class DeptTree<T> implements Serializable {
     private Dept data;
 
     public void initChildren(){
-        this.children = new ArrayList<>();
+        this.children = Lists.newArrayList();
     }
 
 }

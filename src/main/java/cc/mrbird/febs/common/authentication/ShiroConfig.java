@@ -2,6 +2,7 @@ package cc.mrbird.febs.common.authentication;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import cc.mrbird.febs.common.properties.FebsProperties;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.codec.Base64;
@@ -137,7 +138,7 @@ public class ShiroConfig {
         CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
         cookieRememberMeManager.setCookie(rememberMeCookie());
         // rememberMe cookie 加密的密钥
-        String encryptKey = "febs_shiro_key";
+        String encryptKey = "antares_febs_shiro_key";
         byte[] encryptKeyBytes = encryptKey.getBytes(StandardCharsets.UTF_8);
         String rememberKey = Base64Utils.encodeToString(Arrays.copyOf(encryptKeyBytes, 16));
         cookieRememberMeManager.setCipherKey(Base64.decode(rememberKey));
@@ -176,7 +177,7 @@ public class ShiroConfig {
     @Bean
     public DefaultWebSessionManager sessionManager() {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-        Collection<SessionListener> listeners = new ArrayList<>();
+        Collection<SessionListener> listeners = Lists.newArrayList();
         listeners.add(new ShiroSessionListener());
         // 设置 session超时时间
         sessionManager.setGlobalSessionTimeout(febsProperties.getShiro().getSessionTimeout() * 1000L);
