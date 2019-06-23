@@ -6,6 +6,7 @@ import cc.mrbird.febs.monitor.entity.ActiveUser;
 import cc.mrbird.febs.system.entity.User;
 import cc.mrbird.febs.monitor.service.ISessionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -35,7 +36,7 @@ public class SessionServiceImpl implements ISessionService {
     public List<ActiveUser> list(String username) {
         String currentSessionId = (String) SecurityUtils.getSubject().getSession().getId();
 
-        List<ActiveUser> list = new ArrayList<>();
+        List<ActiveUser> list = Lists.newArrayList();
         Collection<Session> sessions = sessionDAO.getActiveSessions();
         for (Session session : sessions) {
             ActiveUser activeUser = new ActiveUser();

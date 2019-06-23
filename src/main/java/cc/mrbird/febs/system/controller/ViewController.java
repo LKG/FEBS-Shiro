@@ -61,7 +61,8 @@ public class ViewController extends BaseController {
         AuthorizationInfo authorizationInfo = shiroHelper.getCurrentuserAuthorizationInfo();
         User user = super.getCurrentUser();
         user.setPassword("It's a secret");
-        model.addAttribute("user", userService.findByName(user.getUsername())); // 获取实时的用户信息
+        // 获取实时的用户信息
+        model.addAttribute("user", userService.findByName(user.getUsername()));
         model.addAttribute("permissions", authorizationInfo.getStringPermissions());
         model.addAttribute("roles",authorizationInfo.getRoles());
         return "index";

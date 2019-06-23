@@ -52,7 +52,7 @@ public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> i
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.SUPPORTS,rollbackFor = Exception.class)
     public void saveLoginLog(LoginLog loginLog) {
         loginLog.setLoginTime(new Date());
         HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
@@ -63,7 +63,7 @@ public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> i
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.SUPPORTS,rollbackFor = Exception.class)
     public void deleteLoginLogs(String[] ids) {
         List<String> list = Arrays.asList(ids);
         baseMapper.deleteBatchIds(list);

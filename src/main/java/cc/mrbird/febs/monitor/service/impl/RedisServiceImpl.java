@@ -4,6 +4,7 @@ import cc.mrbird.febs.common.exception.RedisConnectException;
 import cc.mrbird.febs.common.function.JedisExecutor;
 import cc.mrbird.febs.monitor.entity.RedisInfo;
 import cc.mrbird.febs.monitor.service.IRedisService;
+import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Client;
@@ -77,7 +78,7 @@ public class RedisServiceImpl implements IRedisService {
                     return client.getIntegerReply();
                 }
         );
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = Maps.newHashMap();
         map.put("dbSize", dbSize);
         return map;
     }
@@ -96,7 +97,7 @@ public class RedisServiceImpl implements IRedisService {
         for (String s : strs) {
             String[] detail = s.split(":");
             if ("used_memory".equals(detail[0])) {
-                map = new HashMap<>();
+                map = Maps.newHashMap();
                 map.put("used_memory", detail[1].substring(0, detail[1].length() - 1));
                 break;
             }
