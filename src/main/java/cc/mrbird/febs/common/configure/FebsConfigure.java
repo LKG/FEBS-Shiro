@@ -1,6 +1,7 @@
 package cc.mrbird.febs.common.configure;
 
 import cc.mrbird.febs.common.xss.XssFilter;
+import com.google.common.collect.Maps;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,7 +43,7 @@ public class FebsConfigure {
         filterRegistrationBean.setOrder(1);
         filterRegistrationBean.setEnabled(true);
         filterRegistrationBean.addUrlPatterns("/*");
-        Map<String, String> initParameters = new HashMap<>();
+        Map<String, String> initParameters = Maps.newHashMap();
         initParameters.put("excludes", "/favicon.ico,/img/*,/js/*,/css/*");
         initParameters.put("isIncludeRichText", "true");
         filterRegistrationBean.setInitParameters(initParameters);
